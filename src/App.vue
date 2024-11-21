@@ -10,30 +10,51 @@ const favoritePlaces = [
   {
     id: 1,
     title: 'New place 1',
-    description: 'SUper description 1',
+    description: 'Super description 1',
     img: '',
     lngLat: [30.523333, 50.490001]
   },
   {
     id: 2,
     title: 'New place 2',
-    description: 'SUper description 2',
+    description: 'Super description 2',
     img: '',
     lngLat: [30.5228, 50.420001]
+  },
+  {
+    id: 3,
+    title: 'New place 3',
+    description: 'Super description 3',
+    img: '',
+    lngLat: [30.703683, 50.389739]
+  },
+  {
+    id: 4,
+    title: 'New place 4',
+    description: 'Super description 4',
+    img: '',
+    lngLat: [30.389619, 50.431875]
   }
 ]
 
 const activeId = ref(null)
+const map = ref(null)
 
 const changeActiveId = (id) => {
   activeId.value = id
+}
+
+const changePlace = (id) => {
+  const { lngLat } = favoritePlaces.find((place) => place.id === id)
+  changeActiveId(id)
+  map.value.flyTo({ center: lngLat })
 }
 </script>
 
 <template>
   <main class="flex h-screen">
     <div class="bg-white h-full w-[400px] shrink-0 overflow-auto pb-10">
-      <FavoritePlaces :items="favoritePlaces" :active-id="activeId" />
+      <FavoritePlaces :items="favoritePlaces" :active-id="activeId" @place-clicked="changePlace" />
     </div>
     <div class="w-full h-full flex items-center justify-center text-6xl">
       <MapboxMap
@@ -42,6 +63,7 @@ const changeActiveId = (id) => {
         :zoom="10"
         :access-token="mapSettings.apiToken"
         :map-style="mapSettings.style"
+        @mb-created="(mapInstance) => (map = mapInstance)"
       >
         <MapboxMarker v-for="place in favoritePlaces" :key="place.id" :lngLat="place.lngLat">
           <button @click="changeActiveId(place.id)">
