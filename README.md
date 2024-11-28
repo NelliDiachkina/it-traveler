@@ -22,6 +22,11 @@ This application enables users to add their favorite places to an interactive ma
 - **Vite**: A fast and modern build tool used to bundle and serve the application during development and production.
 
 ## Pages
+![1](https://github.com/user-attachments/assets/0c80c4f2-50a2-4a05-8a38-904b98631b21)
+![2-n](https://github.com/user-attachments/assets/93e1574a-31e7-464a-89b3-bef6342584b5)
+![3](https://github.com/user-attachments/assets/e72c6a77-6c70-4c29-a446-091d19d2e382)
+![4](https://github.com/user-attachments/assets/bc4d46dc-83c4-4202-9bbc-bfd0d6ae73ed)
+![5](https://github.com/user-attachments/assets/6959eba1-f05a-4a61-8314-3582cc628e8c)
 
 ## Recommended IDE Setup
 
